@@ -1,5 +1,6 @@
 locals {
   subnet_id = "fl8dm4v6nv73qms72iet"
+  platform_id = "standard-v3"
 }
 
 resource "yandex_compute_image" "ubuntu_2204" {
@@ -29,6 +30,7 @@ resource "yandex_compute_instance" "vm-1" {
     cores  = 2
     memory = 4
   }
+  platform_id = local.platform_id
 
   boot_disk {
     disk_id = yandex_compute_disk.boot-disk-vm1.id
@@ -52,6 +54,7 @@ resource "yandex_compute_instance" "vm-2" {
     cores  = 2
     memory = 4
   }
+  platform_id = local.platform_id
 
   boot_disk {
     disk_id = yandex_compute_disk.boot-disk-vm2.id
